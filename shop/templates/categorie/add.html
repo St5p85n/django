@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <h1>Ajout de categorie</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label>Libelle</label><br>
+        <input type="text" name="libelle"><br><br>
+        <button type="submit">Enregistrer</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .conn{
+             color: whitesmoke;
+            font-size: 25px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+
+      <div class="nav">
+           <a href="{% url 'liste' %}">Liste de categorie</a>
+           <a href="{% url 'add' %}">Ajout de categorie</a>
+           <a href="{% url 'addP' %}">Ajout produit</a>
+            <a href="{% url 'listeP' %}">Liste produit</a>
+      </div>
+      {% if not user.is_authenticated %}
+                <a class="conn" href="{% url 'login' %}">Se connecter</a>
+      {% else %}
+          <a class="conn" href="{% url 'logout' %}">Se deconnecter</a>
+      {% endif %}
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+ <script src="{% static 'js/scripte2.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

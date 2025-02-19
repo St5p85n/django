@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Nom du produit</label>
+        <input type="text" name="nom" required><br>
+        <label>La description</label>
+        <input type="text" name="description" required><br>
+        <label>prix</label>
+        <input type="number" name="prix" required><br>
+        <label>Photo</label>
+        <input type="file" name="nomPhoto" required><br>
+        <label>Categorie</label>
+        <select name="idCategorie">
+            <option>Choix de la categorie</option>
+            {% for cat in categories %}
+                <option value="{{ cat.id }}">{{ cat.libelle }}</option>
+            {% endfor %}
+        </select><br>
+        <button>Enregistrer</button>
+    </form>
+{% endblock %}

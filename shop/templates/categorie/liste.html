@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+    <input type="text" id="mi" placeholder="rechercher">
+    <input type="text" id="donne" placeholder="verif" >
+    <div id="ver" data-user="{{ user.username }}"></div>
+
+   {% if not user.is_authenticated %}
+       <p>Pas connecte</p>
+    {% else %}
+       <p>Bien connecte</p>
+       <h2>{{ user.username }}</h2>
+    {% endif %}
+
+    <h2>Liste de categorie</h2>
+    <table border="5" id="tab">
+        <thead>
+            <tr>
+                <th>Categorie</th>
+                {% if perms.shop.delete_categorie  %}
+                <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for cat in categories %}
+                <tr>
+                    <td>
+                        {{ cat.libelle }}
+                    </td>
+                    {% if perms.shop.delete_categorie %}
+                    <td>
+                        <a class="btn-delete" href="{% url 'sup' idC=cat.id %}">sup</a>
+                        <a class="btn-edit" href="{% url 'edit' idC=cat.id %}">edit</a>
+                    </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

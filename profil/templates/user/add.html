@@ -1,0 +1,17 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <label>Nom</label>
+        <input type="text" name="username" required><br>
+        <label>Password</label>
+        <input type="password" name="password" required><br>
+        <label>Email</label>
+        <input type="email" name="email" required><br>
+        <label>biographie</label>
+        <input type="text" name="biographie" required><br>
+        <label>competence</label>
+        <input type="text" name="competence" required><br>
+        <button>Enregistrer</button>
+    </form>
+{% endblock %}
